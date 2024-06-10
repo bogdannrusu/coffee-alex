@@ -1,4 +1,5 @@
 import AdsBar from "@/components/AdsBar";
+import Advertisement from "@/components/Advertisement";
 import Categories from "@/components/Categories";
 import Footer from "@/components/Footer";
 import Offers from "@/components/Offers";
@@ -13,6 +14,7 @@ const Home = () => {
 			<AdsBar />
 			<Categories />
 			<Offers />
+			<Advertisement />
 			<TopSellers />
 			<Tutorials />
 			<Footer />

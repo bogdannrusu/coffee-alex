@@ -1,5 +1,4 @@
 import banner from "assets/images/HeadBanner.png";
-import { ArrowForwardOutline } from "react-ionicons";
 import leafIcon from "assets/images/leafIcon.svg";
 
 const Banners = () => {
@@ -17,14 +16,13 @@ const Banners = () => {
 				</span>
 				<div className="flex mt-3 items-center gap-2 cursor-pointer z-50 w-fit">
 					<span className="text-primary font-medium">Vezi Produsele</span>
-					<ArrowForwardOutline cssClasses={"!text-primary"} />
 				</div>
 			</div>
 			<div className="flex flex-col justify-center items-center gap-3 bg-primary rounded-[20px] h-full lg:w-[30%] w-full lg:pb-0 pb-5">
 				<div className="flex items-center">
 					<span className="text-white font-semibold text-[40px]">Bogdan Cafe</span>
 					<img
-						src={leafIcon}
+						src={ leafIcon }
 						alt="leafIcon"
 						className="rotate-90"
 					/>
@@ -34,7 +32,6 @@ const Banners = () => {
 				</span>
 				<div className="mt-3 cursor-pointer flex items-center justify-center gap-3 rounded-full bg-secondaryBtn w-[230px] h-[50px]">
 					<span className="text-white font-medium">Vezi Produsele</span>
-					<ArrowForwardOutline cssClasses={"!text-white"} />
 				</div>
 			</div>
 		</div>

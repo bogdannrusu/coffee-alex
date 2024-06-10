@@ -3,7 +3,6 @@ import paypal from "assets/images/paypal.png";
 import stripe from "assets/images/stripe.webp";
 import phone from "assets/images/phone.png";
 import loc from "assets/images/loc.png";
-import { LogoFacebook, LogoInstagram, LogoWhatsapp } from "react-ionicons";
 
 const Footer = () => {
 	return (
@@ -97,9 +96,6 @@ const Footer = () => {
 					All rights are resrved by Eric's Cafe. 2024
 				</span>
 				<div className="flex items-center gap-4 z-50">
-					<LogoInstagram cssClasses={"cursor-pointer !fill-white"} />
-					<LogoWhatsapp cssClasses={"cursor-pointer !fill-white"} />
-					<LogoFacebook cssClasses={"cursor-pointer !fill-white"} />
 				</div>
 			</div>
 		</div>

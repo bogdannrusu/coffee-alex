@@ -2,29 +2,28 @@ import { tutorialsList } from "@/data";
 import leaf from "assets/images/Leaf.svg";
 import leafRight from "assets/images/LeafRight.svg";
 import tutorials from "assets/images/tutorials.png";
-import { ArrowForwardOutline } from "react-ionicons";
 
 const Tutorials = () => {
 	return (
 		<div className="w-full lg:px-[180px] px-5 mt-[80px] relative lg:mb-[100px] mb-[110vh]">
 			<img
-				src={ leaf }
+				src={leaf}
 				alt="leaf"
 				className="absolute bottom-[-180px] left-0 rotate-[20deg]"
 			/>
 			<img
-				src={ leafRight }
+				src={leafRight}
 				alt="leaf"
 				className="absolute top-[-180px] right-0"
 			/>
 			<div className="w-full bg-primary rounded-[30px] h-[426px] flex justify-center py-8 relative">
 				<img
-					src={ tutorials }
+					src={tutorials}
 					alt="offers"
 					className="absolute top-0 left-0"
 				/>
 				<img
-					src={ tutorials }
+					src={tutorials}
 					alt="offers"
 					className="absolute top-[-30px] right-0 rotate-180"
 				/>
@@ -38,7 +37,7 @@ const Tutorials = () => {
 							key={tutorial.date}
 						>
 							<img
-								src={ tutorial.image }
+								src={tutorial.image}
 								className="rounded-[12px]"
 								alt="Tutorial"
 							/>
@@ -49,7 +48,6 @@ const Tutorials = () => {
 								<span className="text-disabledText text-sm">{tutorial.date}</span>
 								<div className="flex items-center gap-2 cursor-pointer">
 									<span className="text-secondary text-sm">Read more</span>
-									<ArrowForwardOutline cssClasses={"!text-secondary"} />
 								</div>
 							</div>
 						</div>
@@ -59,7 +57,6 @@ const Tutorials = () => {
 			<div className="w-full lg:flex hidden items-center justify-center mt-[180px]">
 				<div className="px-4 py-3 bg-secondary flex items-center gap-2 rounded-full cursor-pointer">
 					<span className="text-white font-medium text-[15px]">View More</span>
-					<ArrowForwardOutline cssClasses={"!text-white"} />
 				</div>
 			</div>
 		</div>
