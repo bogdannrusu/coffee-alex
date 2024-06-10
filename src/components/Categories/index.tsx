@@ -17,12 +17,6 @@ const Categories = () => {
 						</span>
 					</div>
 				</div>
-				<a
-					href="#"
-					className="text-primary text-[15px] lg:block hidden"
-				>
-					View All
-				</a>
 			</div>
 			<div className="w-full flex items-center justify-between gap-8 overflow-x-auto pb-6 z-50">
 				{categories.map((cat) => (

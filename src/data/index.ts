@@ -35,10 +35,11 @@ export const navItems = [
 
 export const initialOffersNav = [
 	{ title: "Coffee beans", active: true },
-	{ title: "Coffee grinders", active: false },
-	{ title: "Barista tools", active: false },
-	{ title: "Water boilers", active: false },
-	{ title: "Resturant equipments", active: false },
+	{ title: "Coffee beans", active: false },
+	{ title: "Coffee beans", active: true },
+	{ title: "Coffee beans", active: true },
+	{ title: "Coffee beans", active: true },
+
 ];
 
 export const offerProducts = [
@@ -69,13 +70,12 @@ export const offerProducts = [
 ];
 
 export const initialTopSellers = [
-	{ title: "All Categories", active: true },
-	{ title: "Coffee grinder", active: false },
-	{ title: "Barista tools", active: false },
-	{ title: "Water boiler", active: false },
-	{ title: "Resturant equipments", active: false },
-	{ title: "Cakes & candies", active: false },
-	{ title: "Crepe Maker", active: false },
+	{ title: "Toate Categoriile", active: true },
+	{ title: "Americano", active: false },
+	{ title: "Espresso", active: false },
+	{ title: "Latte", active: false },
+	{ title: "Milkshake", active: false },
+	{ title: "Cold Tea's", active: false },
 ];
 
 export const tutorialsList = [

@@ -20,7 +20,7 @@ const Banners = () => {
 			</div>
 			<div className="flex flex-col justify-center items-center gap-3 bg-primary rounded-[20px] h-full lg:w-[30%] w-full lg:pb-0 pb-5">
 				<div className="flex items-center">
-					<span className="text-white font-semibold text-[40px]">Bogdan Cafe</span>
+					<span className="text-white font-semibold text-[40px]">Alex Cafe</span>
 					<img
 						src={ leafIcon }
 						alt="leafIcon"

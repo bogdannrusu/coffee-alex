@@ -28,7 +28,7 @@ const Tutorials = () => {
 					className="absolute top-[-30px] right-0 rotate-180"
 				/>
 				<span className="text-white font-semibold text-[35px] text-center">
-					Eric Cafe Tutorials
+					Alex Cafe Tutorials
 				</span>
 				<div className="lg:w-[90%] w-full absolute top-[130px] lg:px-[100px] px-5 lg:py-[50px] flex lg:flex-row flex-col items-center justify-between lg:gap-[64px] gap-5 overflow-x-auto">
 					{tutorialsList.map((tutorial) => (
@@ -54,10 +54,7 @@ const Tutorials = () => {
 					))}
 				</div>
 			</div>
-			<div className="w-full lg:flex hidden items-center justify-center mt-[180px]">
-				<div className="px-4 py-3 bg-secondary flex items-center gap-2 rounded-full cursor-pointer">
-					<span className="text-white font-medium text-[15px]">View More</span>
-				</div>
+			<div className="w-full lg:flex hidden items-center justify-center mt-[130px]">
 			</div>
 		</div>
 	);
