@@ -8,23 +8,23 @@ const Tutorials = () => {
 	return (
 		<div className="w-full lg:px-[180px] px-5 mt-[80px] relative lg:mb-[100px] mb-[110vh]">
 			<img
-				src={leaf}
+				src={ leaf }
 				alt="leaf"
 				className="absolute bottom-[-180px] left-0 rotate-[20deg]"
 			/>
 			<img
-				src={leafRight}
+				src={ leafRight }
 				alt="leaf"
 				className="absolute top-[-180px] right-0"
 			/>
 			<div className="w-full bg-primary rounded-[30px] h-[426px] flex justify-center py-8 relative">
 				<img
-					src={tutorials}
+					src={ tutorials }
 					alt="offers"
 					className="absolute top-0 left-0"
 				/>
 				<img
-					src={tutorials}
+					src={ tutorials }
 					alt="offers"
 					className="absolute top-[-30px] right-0 rotate-180"
 				/>
@@ -38,7 +38,7 @@ const Tutorials = () => {
 							key={tutorial.date}
 						>
 							<img
-								src={tutorial.image}
+								src={ tutorial.image }
 								className="rounded-[12px]"
 								alt="Tutorial"
 							/>

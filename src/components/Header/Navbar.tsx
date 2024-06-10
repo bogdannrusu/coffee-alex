@@ -11,7 +11,7 @@ const Navbar = () => {
 						key={item.title}
 						className="text-navlinks text-[14px]"
 					>
-						{item.title}
+						{ item.title }
 					</a>
 				))}
 			</div>

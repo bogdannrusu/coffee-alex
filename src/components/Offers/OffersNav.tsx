@@ -14,13 +14,13 @@ const OffersNav = () => {
 				<span className="text-primary font-semibold text-[22px]">Categories</span>
 				{cats.map((cat) => (
 					<span
-						key={cat.title}
+						key={ cat.title }
 						onClick={() => handleClick(cat.title)}
 						className={`font-medium cursor-pointer ${
 							cat.active ? "text-secondary" : "text-disabledText"
 						}`}
 					>
-						{cat.title}
+						{ cat.title }
 					</span>
 				))}
 			</div>
