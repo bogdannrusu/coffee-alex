@@ -23,7 +23,7 @@ const TopNav = () => {
 						alt="shopping-button"
 						className="cursor-pointer"
 					/>
-					<span className="text-primary font-medium text-[18px]">Bogdan Cafe</span>
+					<span className="text-primary font-medium text-[18px]">Alex Cafe</span>
 				</div>
 				<span className="text-primary text-sm">Coffe & alte senzatii nemaiîntâlnite
 			</span>
@@ -40,8 +40,8 @@ const TopNav = () => {
 					className="cursor-pointer lg:hidden block w-[53px]"
 				/>
 				<div className="lg:flex hidden flex-col">
-					<span className="font-semibold text-secondary">+1</span>
-					<span className="font-semibold text-primary">27631546</span>
+					<span className="font-semibold text-secondary">+373</span>
+					<span className="font-semibold text-primary">68720841</span>
 				</div>
 			</div>
 		</div>

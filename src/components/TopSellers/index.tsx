@@ -22,9 +22,9 @@ const TopSellers = () => {
 						alt="goldBean"
 					/>
 					<div className="flex flex-col gap-1">
-						<span className="text-primary font-semibold text-[20px]">Top Sellers</span>
+						<span className="text-primary font-semibold text-[20px]">Meniul nostru</span>
 						<span className="text-primary font-medium">
-							Be Quick! these ones run out fast.
+						Fii rapid! Astea se termina repede.
 						</span>
 					</div>
 				</div>
@@ -48,9 +48,9 @@ const TopSellers = () => {
 						key={index}
 						className="lg:w-[280px] w-[80%] rounded-[20px] border-[1.5px] border-catBorder flex flex-col px-8 pt-8 pb-4 relative cursor-pointer"
 					>
-						<div className="absolute text-[15px] font-medium top-4 left-4 text-white rounded-[30px] py-[2px] px-3 flex items-center justify-center bg-primary">
+						{/* <div className="absolute text-[15px] font-medium top-4 left-4 text-white rounded-[30px] py-[2px] px-3 flex items-center justify-center bg-primary">
 							20%
-						</div>
+						</div> */}	
 						<img
 							src={dp3}
 							alt="Product-Image"
@@ -62,7 +62,7 @@ const TopSellers = () => {
 								<span className="text-disabledText text-[15px]">Coffee beans</span>
 							</div>
 							<div className="flex flex-col">
-								<span className="text-disabledText font-semibold line-through">$290</span>
+							{/* <span className="text-disabledText font-semibold line-through">$290</span>  */}	
 								<span className="text-secondary font-semibold">$240</span>
 							</div>
 						</div>
