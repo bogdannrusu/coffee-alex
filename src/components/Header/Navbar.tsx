@@ -15,13 +15,13 @@ const Navbar = () => {
 					</a>
 				))}
 			</div>
-			<img
-				src={instagram}
-				alt="instagram-link"
-				className="cursor-pointer items-start w-[28px]"
-			/>
-			<div>
-				<a href="#" className="text-navlinks mr-3 text-[14px]">coffe_alex</a>
+			<div className="flex items-center gap-2">
+				<img
+					src={ instagram }
+					alt="instagram-link"
+					className="cursor-pointer w-[28px]"
+				/>
+				<a href="#" className="text-navlinks text-[14px]">coffe_alex</a>
 			</div>
 		</div>
 	);
