@@ -9,7 +9,7 @@ const Footer = () => {
 		<div className="w-full flex flex-col">
 			<div className="w-full bg-primary py-8 flex flex-col items-center justify-center gap-8">
 				<div className="flex items-center">
-					<span className="text-white font-semibold text-[40px]">Alex Cafe</span>
+					<span className="text-white font-semibold text-[40px]">Le Coupage</span>
 					<img
 						src={leafIcon}
 						alt="leafIcon"
@@ -31,12 +31,6 @@ const Footer = () => {
 						className="text-white"
 					>
 						Despre
-					</a>
-					<a
-						href="#"
-						className="text-white"
-					>
-						Contact
 					</a>
 					<a
 						href="#"
@@ -84,7 +78,7 @@ const Footer = () => {
 			</div>
 			<div className="w-full bg-darkFooter h-[57px] flex items-center justify-between lg:px-[100px] px-5">
 				<span className="text-white text-[15px] z-50">&copy;
-					All rights are reserved by <a href=""> Alex's Cafe </a> & <a href="#">Bogdan Rusu</a>. 2024
+					All rights are reserved by <a href=""> Le Coupage </a> & <a href="#">Bogdan Rusu</a>. 2024
 				</span>
 				<div className="flex items-center gap-4 z-50">
 				</div>

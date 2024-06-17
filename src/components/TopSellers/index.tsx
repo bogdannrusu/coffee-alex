@@ -1,10 +1,12 @@
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useMediaQuery } from "react-responsive";
 import { initialTopSellers } from "@/data";
 import goldBean from "assets/images/goldBean.png";
-import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import dp3 from "assets/images/dp3.png";
 
 const TopSellers = () => {
+	const navigate = useNavigate();
 	const isMobile = useMediaQuery({ maxWidth: 767 });
 	const items = isMobile ? [...Array(2)] : [...Array(10)];
 	const [cats, setCats] = useState(initialTopSellers);
@@ -13,18 +15,19 @@ const TopSellers = () => {
 		setCats((prevCats) => prevCats.map((item) => ({ ...item, active: item.title === title })));
 	};
 
+	const handleGoodsViewClick = () => {
+		navigate('/goods');
+	};
+
 	return (
 		<div className="w-full lg:px-[180px] px-5 flex flex-col gap-12">
 			<div className="flex lg:flex-row flex-col lg:items-center items-start justify-between gap-8 w-full">
 				<div className="flex items-center gap-2">
-					<img
-						src={goldBean}
-						alt="goldBean"
-					/>
+					<img src={goldBean} alt="goldBean" />
 					<div className="flex flex-col gap-1">
 						<span className="text-primary font-semibold text-[20px]">Meniul nostru</span>
 						<span className="text-primary font-medium">
-						Fii rapid! Astea se termina repede.
+							Fii rapid! Astea se termina repede.
 						</span>
 					</div>
 				</div>
@@ -43,26 +46,22 @@ const TopSellers = () => {
 				</div>
 			</div>
 			<div className="flex items-center justify-center gap-[30px] flex-wrap">
-				{items.map((index: number) => (
+				{items.map((_, index) => (
 					<div
 						key={index}
 						className="lg:w-[280px] w-[80%] rounded-[20px] border-[1.5px] border-catBorder flex flex-col px-8 pt-8 pb-4 relative cursor-pointer"
 					>
 						{/* <div className="absolute text-[15px] font-medium top-4 left-4 text-white rounded-[30px] py-[2px] px-3 flex items-center justify-center bg-primary">
 							20%
-						</div> */}	
-						<img
-							src={dp3}
-							alt="Product-Image"
-							className="w-[47%] my-0 mx-auto"
-						/>
+						</div> */}
+						<img src={dp3} alt="Product-Image" className="w-[47%] my-0 mx-auto" />
 						<div className="flex items-center justify-between w-full mt-8">
 							<div className="flex flex-col">
 								<span className="text-primary font-medium text-[17px]">Boxilian Beans</span>
 								<span className="text-disabledText text-[15px]">Coffee beans</span>
 							</div>
 							<div className="flex flex-col">
-							{/* <span className="text-disabledText font-semibold line-through">$290</span>  */}	
+								{/* <span className="text-disabledText font-semibold line-through">$290</span>  */}
 								<span className="text-secondary font-semibold">$240</span>
 							</div>
 						</div>
@@ -71,7 +70,9 @@ const TopSellers = () => {
 			</div>
 			<div className="w-full flex items-center justify-center">
 				<div className="px-4 py-3 bg-secondary flex items-center gap-2 rounded-full cursor-pointer z-50">
-					<span className="text-white font-medium text-[15px]">View More</span>
+					<button className="text-white font-medium text-[15px]" onClick={ handleGoodsViewClick }>
+						Vezi mai multe
+					</button>
 				</div>
 			</div>
 		</div>

@@ -2,28 +2,29 @@ import bean from "assets/images/bean.svg";
 import logo from "assets/images/logo.png";
 import menu from "assets/images/menu.svg";
 import shopping from "assets/images/shopping.svg";
+import Login from "../Login/index";
 
 const TopNav = () => {
 	return (
 		<div className="w-full flex items-center justify-between">
 			<div className="flex items-center gap-3">
 				<img
-					src={shopping}
+					src={ shopping }
 					alt="shopping-button"
 					className="cursor-pointer"
 				/>
-				<button className="rounded-full outline-none shadow-none border border-primary text-primary font-medium px-3 py-2 lg:block hidden">
-					Login / Signup
+				<button onClick={ Login } className="rounded-full outline-none shadow-none border border-primary text-primary font-medium px-3 py-2 lg:block hidden">
+					Login
 				</button>
 			</div>
 			<div className="flex flex-col">
-				<div className="flex items-center gap-1">
+				<div className="flex items-center gap-12">
 					<img
 						src={ logo }
 						alt="shopping-button"
 						className="cursor-pointer"
 					/>
-					<span className="text-primary font-medium text-[18px]">Alex Cafe</span>
+					<span className="text-primary font-medium text-[18px]">Le Coupage</span>
 				</div>
 				<span className="text-primary text-sm">Coffe & alte senzatii nemaiîntâlnite
 			</span>

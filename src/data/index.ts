@@ -25,12 +25,12 @@ export const categories = [
 ];
 
 export const navItems = [
-	{ title: "Home", path: "/" },
-	{ title: "Products", path: "/" },
-	{ title: "Education", path: "/" },
-	{ title: "Services", path: "/" },
-	{ title: "About", path: "/" },
-	{ title: "Contact", path: "/" },
+	{ title: "Acasa", path: "/" },
+	{ title: "Produse", path: "/" },
+	{ title: "Educatie", path: "/" },
+	{ title: "Servicii", path: "/" },
+	{ title: "Despre", path: "/" },
+	{ title: "Contacte", path: "/" },
 ];
 
 export const initialOffersNav = [

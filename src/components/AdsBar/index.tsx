@@ -10,7 +10,7 @@ const AdsBar = () => {
 						src={logo}
 						alt="logo"
 					/>
-					<span className="text-adsLogo font-semibold whitespace-nowrap">Alex Cafe</span>
+					<span className="text-adsLogo font-semibold whitespace-nowrap">Le Coupage</span>
 				</div>
 			</Marquee>
 		</div>
