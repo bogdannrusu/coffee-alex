@@ -13,10 +13,10 @@ import t2 from "assets/images/t2.png";
 import t3 from "assets/images/t3.png";
 
 export const categories = [
-	{ title: "Coffee Beans", image: one },
-	{ title: "Coffee Grinder", image: two },
-	{ title: "Barista Tools", image: three },
-	{ title: "Coffee Maker", image: four },
+	{ title: "Americano", image: one },
+	{ title: "Espresso", image: two },
+	{ title: "Latte", image: three },
+	{ title: "Capucinno", image: four },
 	{ title: "Cold Bar Tools", image: five },
 	{ title: "Crepe Maker", image: six },
 	{ title: "Water Boiler", image: seven },

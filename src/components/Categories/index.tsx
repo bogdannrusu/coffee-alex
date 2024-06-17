@@ -11,9 +11,9 @@ const Categories = () => {
 						alt="goldBean"
 					/>
 					<div className="flex flex-col gap-1">
-						<span className="text-primary font-semibold text-[20px]">Categories</span>
+						<span className="text-primary font-semibold text-[20px]">Categorii</span>
 						<span className="text-primary font-medium">
-							We choosed the best from the best!
+							Am ales cei mai buni dintre cei mai buni!
 						</span>
 					</div>
 				</div>

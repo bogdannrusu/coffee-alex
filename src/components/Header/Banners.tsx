@@ -8,11 +8,11 @@ const Banners = () => {
 				className="flex flex-col gap-3 lg:w-[70%] w-full lg:rounded-[20px] rounded-t-[20px] bg-center bg-cover h-full lg:p-16 px-5 py-16"
 				style={{ backgroundImage: `url(${banner})` }}
 			>
-				<span className="text-primary font-semibold text-[45px] z-50">
-					Top Quality Equipments
+				<span className="text-primary font-semibold text-[42px] z-50">
+					Echipamente de calitate superioara
 				</span>
 				<span className="text-primary font-medium text-[25px] z-50">
-					and Coffee supplements
+					și suplimente de cafea
 				</span>
 				<div className="flex mt-3 items-center gap-2 cursor-pointer z-50 w-fit">
 					<span className="text-primary font-medium">Vezi Produsele</span>
