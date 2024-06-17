@@ -2,8 +2,13 @@
 import { lazy } from "react";
 import { RouteObject } from "react-router";
 
-const Home = lazy(() => import("pages/Home"));
 
-const routes: RouteObject[] = [{ path: "/", element: <Home /> }];
+const Home = lazy(() => import("pages/Home"));
+const Goods = lazy(() => import("pages/GoodsNav"));
+
+const routes: RouteObject[] = [
+    { path: "/", element: <Home /> },
+    { path: "/goods", element: <Goods /> }
+    ];
 
 export default routes;

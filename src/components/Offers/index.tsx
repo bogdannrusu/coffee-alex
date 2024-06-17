@@ -28,7 +28,7 @@ const Offers = () => {
 					alt="offers"
 					className="absolute top-[50px] right-0 rotate-180"
 				/>
-				<span className="text-white font-semibold text-[35px] text-center">Special Offers</span>
+				<span className="text-white font-semibold text-[35px] text-center"> Special Offers </span>
 				<div className="bg-white w-[85%] rounded-[20px] absolute top-[130px] lg:h-[570px] shadow-xl lg:px-[100px] px-5 lg:py-[50px] py-5 flex flex-col lg:gap-[60px] gap-5">
 					<OffersNav />
 					<OffersProducts />

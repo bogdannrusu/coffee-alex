@@ -28,7 +28,7 @@ const Tutorials = () => {
 					className="absolute top-[-30px] right-0 rotate-180"
 				/>
 				<span className="text-white font-semibold text-[35px] text-center">
-					Vasile's Tutorials
+					Tutorial marca "Le Coupage"
 				</span>
 				<div className="lg:w-[90%] w-full absolute top-[130px] lg:px-[100px] px-5 lg:py-[50px] flex lg:flex-row flex-col items-center justify-between lg:gap-[64px] gap-5 overflow-x-auto">
 					{tutorialsList.map((tutorial) => (

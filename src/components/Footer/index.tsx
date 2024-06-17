@@ -1,6 +1,5 @@
 import leafIcon from "assets/images/leafIcon.svg";
 import paypal from "assets/images/paypal.png";
-//import stripe from "assets/images/stripe.webp";
 import phone from "assets/images/phone.png";
 import loc from "assets/images/loc.png";
 
