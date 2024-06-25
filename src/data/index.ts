@@ -16,8 +16,8 @@ export const categories = [
 	{ title: "Americano", image: one },
 	{ title: "Espresso", image: two },
 	{ title: "Latte", image: three },
-	{ title: "Capucinno", image: four },
-	{ title: "Cold Bar Tools", image: five },
+	{ title: "Cappuccino", image: four },
+	{ title: "Ice Latte", image: five },
 	{ title: "Crepe Maker", image: six },
 	{ title: "Water Boiler", image: seven },
 	{ title: "Steam Equipments", image: eight },
@@ -25,12 +25,11 @@ export const categories = [
 ];
 
 export const navItems = [
-	{ title: "Acasa", path: "/" },
-	{ title: "Produse", path: "/" },
-	{ title: "Educatie", path: "/" },
-	{ title: "Servicii", path: "/" },
-	{ title: "Despre", path: "/" },
-	{ title: "Contacte", path: "/" },
+	{ title: "Home", path: "/" },
+	{ title: "Products", path: "/" },
+	{ title: "Trainings", path: "/" },
+	{ title: "About", path: "/" },
+	{ title: "Contacts", path: "/" },
 ];
 
 export const initialOffersNav = [
