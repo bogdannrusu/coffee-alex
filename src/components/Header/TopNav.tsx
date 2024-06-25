@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bean from "assets/images/bean.svg";
 import logo from "assets/images/logo.png";
@@ -6,16 +6,16 @@ import menu from "assets/images/menu.svg";
 import shopping from "assets/images/shopping.svg";
 import globalDictionary from '../../Dictionary';
 
-const TopNav: React.FC = () => {
+interface TopNavProps {
+  language: 'en' | 'ro';
+  toggleLanguage: () => void;
+}
+
+const TopNav: React.FC<TopNavProps> = ({ language, toggleLanguage }) => {
   const navigate = useNavigate();
-  const [language, setLanguage] = useState<'en' | 'ro'>('en');
 
   const handleLoginView = () => {
     navigate("/login");
-  };
-
-  const toggleLanguage = () => {
-    setLanguage((prevLanguage) => (prevLanguage === 'en' ? 'ro' : 'en'));
   };
 
   const t = (key: string) => {
@@ -64,7 +64,7 @@ const TopNav: React.FC = () => {
           <span className="font-semibold text-secondary">{t("+373")}</span>
           <span className="font-semibold text-primary">{t("68720841")}</span>
         </div>
-        <div className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in">
+        <div className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in ml-4">
           <input
             type="checkbox"
             name="toggle"
