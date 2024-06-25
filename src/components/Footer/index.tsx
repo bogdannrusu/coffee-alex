@@ -23,7 +23,7 @@ const Footer = () => {
 						href="#"
 						className="text-white"
 					>
-						Produse
+						Products
 					</a>
 					<a
 						href="#"

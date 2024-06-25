@@ -1,7 +1,9 @@
 import { categories } from "@/data";
 import goldBean from "assets/images/goldBean.png";
+import { useLanguage } from "../Language/LanguageContext";
 
 const Categories = () => {
+	const { t } = useLanguage();
 	return (
 		<div className="w-full lg:px-[100px] px-5 flex flex-col pt-[70px] gap-8">
 			<div className="flex items-center justify-between w-full">
@@ -11,9 +13,11 @@ const Categories = () => {
 						alt="goldBean"
 					/>
 					<div className="flex flex-col gap-1">
-						<span className="text-primary font-semibold text-[20px]">Categorii</span>
+						<span className="text-primary font-semibold text-[20px]">
+							{t("Categories")}
+							</span>
 						<span className="text-primary font-medium">
-							Am ales cei mai buni dintre cei mai buni!
+							{t("We chose the best of the best!")}	
 						</span>
 					</div>
 				</div>

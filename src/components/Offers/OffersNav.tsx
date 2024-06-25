@@ -1,7 +1,9 @@
 import { initialOffersNav } from "@/data";
 import { useState } from "react";
+import { useLanguage } from "../Language/LanguageContext";
 
 const OffersNav = () => {
+	const { t } = useLanguage();
 	const [cats, setCats] = useState(initialOffersNav);
 
 	const handleClick = (title: string) => {
@@ -11,7 +13,9 @@ const OffersNav = () => {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="w-full flex lg:flex-row flex-col items-center lg:gap-0 gap-3 justify-between">
-				<span className="text-primary font-semibold text-[22px]">Categories</span>
+				<span className="text-primary font-semibold text-[22px]">
+					{t("Categories")} 
+				</span>
 				{cats.map((cat) => (
 					<span
 						key={ cat.title }

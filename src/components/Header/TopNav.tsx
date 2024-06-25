@@ -4,22 +4,14 @@ import bean from "assets/images/bean.svg";
 import logo from "assets/images/logo.png";
 import menu from "assets/images/menu.svg";
 import shopping from "assets/images/shopping.svg";
-import globalDictionary from '../../Dictionary';
+import { useLanguage } from '../Language/LanguageContext';
 
-interface TopNavProps {
-  language: 'en' | 'ro';
-  toggleLanguage: () => void;
-}
-
-const TopNav: React.FC<TopNavProps> = ({ language, toggleLanguage }) => {
+const TopNav: React.FC = () => {
   const navigate = useNavigate();
+  const { language, toggleLanguage, t } = useLanguage();
 
   const handleLoginView = () => {
     navigate("/login");
-  };
-
-  const t = (key: string) => {
-    return language === 'en' ? key : globalDictionary.translateToRomanian(key) || key;
   };
 
   return (
@@ -64,7 +56,7 @@ const TopNav: React.FC<TopNavProps> = ({ language, toggleLanguage }) => {
           <span className="font-semibold text-secondary">{t("+373")}</span>
           <span className="font-semibold text-primary">{t("68720841")}</span>
         </div>
-        <div className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in ml-4">
+        <div className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in">
           <input
             type="checkbox"
             name="toggle"

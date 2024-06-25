@@ -1,41 +1,45 @@
+import React from 'react';
 import banner from "assets/images/HeadBanner.png";
 import leafIcon from "assets/images/leafIcon.svg";
+import { useLanguage } from '../Language/LanguageContext';
 
-const Banners = () => {
-	return (
-		<div className="w-full h-[440px] flex lg:flex-row flex-col items-center gap-7 mt-10 lg:bg-transparent bg-primary lg:rounded-[20px] rounded-t-[20px]">
-			<div
-				className="flex flex-col gap-3 lg:w-[70%] w-full lg:rounded-[20px] rounded-t-[20px] bg-center bg-cover h-full lg:p-16 px-5 py-16"
-				style={{ backgroundImage: `url(${banner})` }}
-			>
-				<span className="text-primary font-semibold text-[42px] z-50">
-					Echipamente de calitate superioara
-				</span>
-				<span className="text-primary font-medium text-[25px] z-50">
-					și suplimente de cafea
-				</span>
-				<div className="flex mt-3 items-center gap-2 cursor-pointer z-50 w-fit">
-					<span className="text-primary font-medium">Vezi Produsele</span>
-				</div>
-			</div>
-			<div className="flex flex-col justify-center items-center gap-3 bg-primary rounded-[20px] h-full lg:w-[30%] w-full lg:pb-0 pb-5">
-				<div className="flex items-center">
-					<span className="text-white font-semibold text-[40px]">Le Coupage</span>
-					<img
-						src={ leafIcon }
-						alt="leafIcon"
-						className="rotate-90"
-					/>
-				</div>
-				<span className="text-center text-navlinks">
-					The most complete cafe equipment store
-				</span>
-				<div className="mt-3 cursor-pointer flex items-center justify-center gap-3 rounded-full bg-secondaryBtn w-[230px] h-[50px]">
-					<span className="text-white font-medium">Vezi Produsele</span>
-				</div>
-			</div>
-		</div>
-	);
+const Banners: React.FC = () => {
+  const { t } = useLanguage();
+
+  return (
+    <div className="w-full h-[440px] flex lg:flex-row flex-col items-center gap-7 mt-10 lg:bg-transparent bg-primary lg:rounded-[20px] rounded-t-[20px]">
+      <div
+        className="flex flex-col gap-3 lg:w-[70%] w-full lg:rounded-[20px] rounded-t-[20px] bg-center bg-cover h-full lg:p-16 px-5 py-16"
+        style={{ backgroundImage: `url(${banner})` }}
+      >
+        <span className="text-primary font-semibold text-[42px] z-50">
+          {t("Superior quality equipment")}
+        </span>
+        <span className="text-primary font-medium text-[25px] z-50">
+          {t("and coffee supplements")}
+        </span>
+        <div className="flex mt-3 items-center gap-2 cursor-pointer z-50 w-fit">
+          <span className="text-primary font-medium">{t("Look at the products")}</span>
+        </div>
+      </div>
+      <div className="flex flex-col justify-center items-center gap-3 bg-primary rounded-[20px] h-full lg:w-[30%] w-full lg:pb-0 pb-5">
+        <div className="flex items-center">
+          <span className="text-white font-semibold text-[40px]">{t("Le Coupage")}</span>
+          <img
+            src={leafIcon}
+            alt="leafIcon"
+            className="rotate-90"
+          />
+        </div>
+        <span className="text-center text-navlinks">
+          {t("The most complete cafe equipment store")}
+        </span>
+        <div className="mt-3 cursor-pointer flex items-center justify-center gap-3 rounded-full bg-secondaryBtn w-[230px] h-[50px]">
+          <span className="text-white font-medium">{t("View Products")}</span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Banners;

@@ -7,13 +7,34 @@ class Dictionary {
       this.roToEng = new Map();
       this.initializeTranslations();
     }
-  
+    //Aici fac translate la contentul din Main
     private initializeTranslations() {
       this.addTranslation("Login", "Autentificare");
+      this.addTranslation("Home", "Acasa");
+      this.addTranslation("Products", "Produse");
+      this.addTranslation("Trainings", "Traininguri");
+      this.addTranslation("About", "Despre");
+      this.addTranslation("Contacts", "Contacte");
       this.addTranslation("Coffee & other unique sensations", "Cafea și alte senzații nemaiîntâlnite");
       this.addTranslation("Le Coupage", "Le Coupage");
-      this.addTranslation("+373", "+373");
-      this.addTranslation("68720841", "68720841");
+      this.addTranslation("Superior quality equipment", "Echipamente de calitate superioara");
+      this.addTranslation("View Products", "Vezi Produsele");
+      this.addTranslation("and coffee supplements", "și suplimente de cafea");
+      this.addTranslation("Look at the products", "Vezi produsele noastre");
+      this.addTranslation("The most complete cafe equipment store", "Cel mai complet magazin de echipamente pentru cafenele");
+      this.addTranslation("View Products", "Vezi Produsele");
+      this.addTranslation("View Products", "Vezi Produsele");
+      this.addTranslation("Categories", "Categorii");
+      this.addTranslation("We chose the best of the best!", "Am ales cei mai buni dintre cei mai buni!");
+      this.addTranslation("", "");
+      this.addTranslation("", "");
+      this.addTranslation("", "");
+      this.addTranslation("", "");
+      this.addTranslation("", "");
+      this.addTranslation("", "");
+      this.addTranslation("", "");
+      this.addTranslation("", "");
+      this.addTranslation("", "");
     }
   
     addTranslation(english: string, romanian: string) {

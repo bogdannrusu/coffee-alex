@@ -1,16 +1,10 @@
 import React from 'react';
 import { navItems } from "@/data";
 import instagram from "assets/images/instagram.png";
-import globalDictionary from '../../Dictionary';
+import { useLanguage } from '../Language/LanguageContext';
 
-interface NavbarProps {
-  language: 'en' | 'ro';
-}
-
-const Navbar: React.FC<NavbarProps> = ({ language }) => {
-  const t = (key: string) => {
-    return language === 'en' ? key : globalDictionary.translateToRomanian(key) || key;
-  };
+const Navbar: React.FC = () => {
+  const { t } = useLanguage();
 
   return (
     <div className="w-full lg:flex hidden items-center justify-between pl-6 pr-3 bg-primary rounded-full h-[60px] mt-7">
