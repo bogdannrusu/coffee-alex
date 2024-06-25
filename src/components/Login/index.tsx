@@ -41,7 +41,7 @@ export default function Login() {
         throw new Error(errorMessage.detail);
       }
 
-      // If login successful, navigate to WpComponent
+      // If login successful, navigate to WpNavBar
       navigate('/wp'); // Adjust the path if necessary
 
     } catch (error: any) {

@@ -77,6 +77,29 @@
 	font-style: italic;
   }
 
+  /* tailwind.css or styles.css */
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #9e624c; /* Customize the color as needed */
+  background-color: #9e624c; /* Customize the color as needed */
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #9e624c; /* Customize the color as needed */
+}
+
+.toggle-label {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.25rem;
+}
+
+.toggle-checkbox:checked {
+  background-color: #9e624c; /* Customize the color as needed */
+  border-color: #9e624c; /* Customize the color as needed */
+}
+
+
 body {
 	font-family: "Poppins", sans-serif;
 	padding: 0;
