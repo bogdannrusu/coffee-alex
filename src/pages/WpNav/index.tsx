@@ -1,9 +1,9 @@
-import WpComponent from '@/components/Wp/WpComponent';
+import WpNavBar from "@/components/Wp/WpNavbar";
 
 function index() {
     return (
 		<div className="w-full flex flex-col">
-            <WpComponent />
+            <WpNavBar />
 		</div>
 	);
 }
