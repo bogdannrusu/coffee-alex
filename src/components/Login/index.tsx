@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,11 +12,13 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import backgroundImage from '../../assets/images/backgroundLogin.png'
+import backgroundImage from '../../assets/images/backgroundLogin.png';
 
 const defaultTheme = createTheme();
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -38,12 +41,12 @@ export default function Login() {
         throw new Error(errorMessage.detail);
       }
 
-      // If login successful, handle your application flow here (e.g., redirect)
-      alert('Login successful!');
+      // If login successful, navigate to WpComponent
+      navigate('/wp'); // Adjust the path if necessary
 
     } catch (error: any) {
       console.error('Login error:', error.message);
-      alert('Login failed. Please check your credentials.');
+      alert('Login failed. Please check your credentials.'); // Replace with your desired error handling
     }
   };
 
@@ -61,7 +64,7 @@ export default function Login() {
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
+            backgroundSize: 'cover',  // Adjust background size here
             backgroundPosition: 'center',
           }}
         />
