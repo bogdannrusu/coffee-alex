@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import globalDictionary from '../../Dictionary';
+import logoNav from 'assets/images/leafIcon.svg'
 
 interface Order {
   id?: number;
@@ -133,6 +134,7 @@ const Orders: React.FC = () => {
     <div>
       <h2 className="text-xl font-bold mb-4">{globalDictionary.translateToRomanian('Orders') || 'Orders'}</h2>
       {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
+      <div className="flex space-x-4 mb-4">
       <button
         className="mb-4 px-4 py-2 bg-blue-500 text-white rounded"
         onClick={() => setShowCreateForm(!showCreateForm)}
@@ -145,6 +147,7 @@ const Orders: React.FC = () => {
       >
         {globalDictionary.translateToRomanian('View Orders') || 'View Orders'}
       </button>
+      </div>
       {showCreateForm && (
         <form onSubmit={handleCreateOrder} className="mb-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           <input
@@ -230,6 +233,7 @@ const WpNavBar: React.FC = () => {
     globalDictionary.addTranslation('Option 1', 'Opțiunea 1');
     globalDictionary.addTranslation('Option 2', 'Opțiunea 2');
     globalDictionary.addTranslation('Option 3', 'Opțiunea 3');
+    globalDictionary.addTranslation('View Orders', 'Vizualizati comenzi');
   }, []);
 
   return (
@@ -241,7 +245,7 @@ const WpNavBar: React.FC = () => {
               <div className="flex-shrink-0">
                 <img
                   className="h-8 w-8"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                  src={ logoNav }
                   alt="Workflow"
                 />
               </div>
@@ -264,16 +268,10 @@ const WpNavBar: React.FC = () => {
                       <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
                         <button
                           onClick={handleShowOrders}
-                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
+                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left space-x-4"
                         >
                           {globalDictionary.translateToRomanian('View Orders') || 'View Orders'}
                         </button>
-                        <Link
-                          to="/create-order"
-                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-                        >
-                          {globalDictionary.translateToRomanian('Create Order') || 'Create Order'}
-                        </Link>
                         <div className="border-t border-gray-200"></div>
                         <button
                           className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
@@ -324,3 +322,4 @@ const WpNavBar: React.FC = () => {
 };
 
 export default WpNavBar;
+
