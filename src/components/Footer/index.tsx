@@ -2,8 +2,10 @@ import leafIcon from "assets/images/leafIcon.svg";
 import paypal from "assets/images/paypal.png";
 import phone from "assets/images/phone.png";
 import loc from "assets/images/loc.png";
+import { useLanguage } from "../Language/LanguageContext";
 
 const Footer = () => {
+	const { t } = useLanguage();
 	return (
 		<div className="w-full flex flex-col">
 			<div className="w-full bg-primary py-8 flex flex-col items-center justify-center gap-8">
@@ -23,19 +25,19 @@ const Footer = () => {
 						href="#"
 						className="text-white"
 					>
-						Products
+						{t("Products")}	
 					</a>
 					<a
 						href="#"
 						className="text-white"
 					>
-						Despre
+						{t("About")}	
 					</a>
 					<a
 						href="#"
 						className="text-white"
 					>
-						Contact
+						{t("Contacts")} 
 					</a>
 				</div>
 				<div className="w-full lg:w-[60%] bg-white opacity-10 h-[1px] my-0 mx-auto"></div>
@@ -77,7 +79,7 @@ const Footer = () => {
 			</div>
 			<div className="w-full bg-darkFooter h-[57px] flex items-center justify-between lg:px-[100px] px-5">
 				<span className="text-white text-[15px] z-50">&copy;
-					All rights are reserved by <a href=""> Le Coupage </a> & <a href="#">Bogdan Rusu</a>. 2024
+					All rights are reserved by <a href="#"> Le Coupage </a> & <a href="https://www.instagram.com/bogdann_rusu/">Bogdan Rusu</a>. {new Date().getFullYear()}
 				</span>
 				<div className="flex items-center gap-4 z-50">
 				</div>
