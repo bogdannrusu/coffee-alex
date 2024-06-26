@@ -3,8 +3,10 @@ import rightLeaf from "assets/images/LeafRight.svg";
 import offers from "assets/images/offers.png";
 import OffersNav from "./OffersNav";
 import OffersProducts from "./OffersProducts";
+import { useLanguage } from "../Language/LanguageContext";
 
 const Offers = () => {
+	const { t } = useLanguage();
 	return (
 		<div className="w-full lg:px-[180px] px-5 mt-[80px] relative">
 			<img
@@ -28,7 +30,7 @@ const Offers = () => {
 					alt="offers"
 					className="absolute top-[50px] right-0 rotate-180"
 				/>
-				<span className="text-white font-semibold text-[35px] text-center"> Oferte Speciale </span>
+				<span className="text-white font-semibold text-[35px] text-center">{t("Special Offers")}  </span>
 				<div className="bg-white w-[85%] rounded-[20px] absolute top-[130px] lg:h-[570px] shadow-xl lg:px-[100px] px-5 lg:py-[50px] py-5 flex flex-col lg:gap-[60px] gap-5">
 					<OffersNav />
 					<OffersProducts />
