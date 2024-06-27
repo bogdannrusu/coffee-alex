@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// frontend/src/Login.js
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
@@ -13,13 +13,14 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import backgroundImage from '../../assets/images/backgroundLogin.png';
+import axios from 'axios';
 
 const defaultTheme = createTheme();
 
 export default function Login() {
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const requestData = {
@@ -28,25 +29,18 @@ export default function Login() {
     };
 
     try {
-      const response = await fetch('http://localhost:8000/login/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData),
+      const response = await axios.post('http://localhost:8000/token', requestData, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       });
 
-      if (!response.ok) {
-        const errorMessage = await response.json();
-        throw new Error(errorMessage.detail);
-      }
+      const { access_token } = response.data;
+      localStorage.setItem('token', access_token);
 
       // If login successful, navigate to WpNavBar
       navigate('/wp'); // Adjust the path if necessary
-
-    } catch (error: any) {
-      console.error('Login error:', error.message);
-      alert('Login failed. Please check your credentials.'); // Replace with your desired error handling
+    } catch (error) {
+     // console.error('Login error:', error.response?.data?.detail || error.message);
+      alert('Login failed. Please check your credentials.');
     }
   };
 
@@ -64,7 +58,7 @@ export default function Login() {
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',  // Adjust background size here
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
@@ -135,3 +129,5 @@ export default function Login() {
     </ThemeProvider>
   );
 }
+
+
