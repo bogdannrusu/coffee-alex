@@ -27,7 +27,7 @@ class Dictionary {
       this.addTranslation("Categories", "Categorii");
       this.addTranslation("We chose the best of the best!", "Am ales cei mai buni dintre cei mai buni!");
       this.addTranslation("Special Offers", "Oferte Speciale");
-      this.addTranslation("", "");
+      this.addTranslation("View Orders", "Vedeti Comenzile");
       this.addTranslation("", "");
       this.addTranslation("", "");
       this.addTranslation("", "");
