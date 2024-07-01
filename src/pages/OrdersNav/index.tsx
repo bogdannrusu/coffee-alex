@@ -1,9 +1,10 @@
-import Orders from "@/components/Wp/Orders";
+import CreateOrders from "@/components/Wp/CreateOrders";
+
 
 function index() {
     return (
 		<div className="w-full flex flex-col">
-            <Orders />
+            <CreateOrders />
 		</div>
 	);
 }

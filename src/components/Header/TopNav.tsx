@@ -21,6 +21,7 @@ const TopNav: React.FC = () => {
           src={shopping}
           alt="shopping-button"
           className="cursor-pointer"
+          onClick={() => navigate("/login")}
         />
         <button onClick={handleLoginView} className="rounded-full outline-none shadow-none border border-primary text-primary font-medium px-3 py-2 lg:block hidden">
           {t("Login")}
