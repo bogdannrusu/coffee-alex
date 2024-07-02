@@ -22,28 +22,6 @@ namespace api.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("api.Models.AcquisitionDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("GoodId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GoodPackageId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("acquisitions_id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AcquisitionDetail");
-                });
-
             modelBuilder.Entity("api.Models.Acquisitions", b =>
                 {
                     b.Property<int>("Id")
@@ -52,41 +30,58 @@ namespace api.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("contragent")
+                    b.Property<string>("Contragent")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("date_entry")
+                    b.Property<decimal>("DepositEntry")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("NrAcquisitions")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("deposit_entry")
+                    b.Property<decimal>("SumEntry")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("SumTVA")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("TypeBlank")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("nr_acquisitions")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("sum_entry")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("sum_tva")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("type_blank")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("user_id")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("dateEntry")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Acquisitions");
+                });
+
+            modelBuilder.Entity("api.Models.AcquisitionsDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AcquisitionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GoodId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GoodPackageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AcquisitionsDetails");
                 });
 
             modelBuilder.Entity("api.Models.Contragents", b =>
@@ -175,25 +170,17 @@ namespace api.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("GoodId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("GoodPackageId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -239,7 +226,7 @@ namespace api.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<bool?>("isActive")
+                    b.Property<bool?>("is_active")
                         .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
