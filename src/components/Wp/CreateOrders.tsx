@@ -64,7 +64,7 @@ export default function CreateOrders() {
         },
         {
           headers: { Authorization: `Bearer ${token}` },
-        }
+        } 
       );
       setOrders([...orders, response.data]);
     } catch (error) {
@@ -160,13 +160,10 @@ export default function CreateOrders() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-              >
+                >
                 Create Order
               </Button>
             </Box>
-            <Typography component="h2" variant="h6">
-              Existing Orders
-            </Typography>
             <Box sx={{ mt: 2 }}>
               {orders.map((order) => (
                 <Paper key={order.id} sx={{ p: 2, mb: 2 }}>
