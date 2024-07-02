@@ -1,27 +1,92 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using api.Context;
 using api.Models;
+using api;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 
-namespace api.Controllers
+namespace CoffeeApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public UsersController(AppDbContext context)
+        public UsersController(AppDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
-        // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        [HttpPost("register")]
+        public async Task<ActionResult> Register(User user)
         {
-            return await _context.Users.ToListAsync();
+            user.Password = HashPassword(user.Password);
+
+            _context.Users.Add(user);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                return BadRequest("Username already exists");
+            }
+
+            return Ok("User registered successfully");
+        }
+
+        [HttpPost("token")]
+        public async Task<ActionResult<Token>> Login([FromForm] string username, [FromForm] string password)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
+
+            if (user == null || !VerifyPassword(password, user.Password))
+            {
+                return Unauthorized("Incorrect username or password");
+            }
+
+            var token = CreateAccessToken(user.Username);
+            return Ok(new Token { AccessToken = token, TokenType = "bearer" });
+        }
+
+        private string HashPassword(string password)
+        {
+            using var sha256 = SHA256.Create();
+            var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+            return BitConverter.ToString(bytes).Replace("-", "").ToLower();
+        }
+
+        private bool VerifyPassword(string plainPassword, string hashedPassword)
+        {
+            return HashPassword(plainPassword) == hashedPassword;
+        }
+
+        private string CreateAccessToken(string username)
+        {
+            var jwtSettings = _configuration.GetSection("Jwt");
+            var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, username)
+                }),
+                Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }
