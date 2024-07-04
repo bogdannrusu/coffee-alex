@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Models{
-    public class Workpoints{
+    public class WorkpointsDTO{
         public int Id { get; set; }
         public string WpName {get; set;}
         public string WpAddress {get; set;}

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using api.Context;
 using api.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CoffeeApi.Controllers
 {
@@ -12,15 +13,15 @@ namespace CoffeeApi.Controllers
     [Authorize]
     public class OrdersController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly CoffeeLeCoupageContext _context;
 
-        public OrdersController(AppDbContext context)
+        public OrdersController(CoffeeLeCoupageContext context)
         {
             _context = context;
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateOrder(Orders order)
+        public async Task<ActionResult> CreateOrder(Order order)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             order.UserId = userId;
@@ -32,7 +33,7 @@ namespace CoffeeApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Orders>>> GetOrders()
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var orders = await _context.Orders.Where(o => o.UserId == userId).ToListAsync();
@@ -40,7 +41,7 @@ namespace CoffeeApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Orders>> GetOrder(int id)
+        public async Task<ActionResult<Order>> GetOrder(int id)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var order = await _context.Orders.SingleOrDefaultAsync(o => o.Id == id && o.UserId == userId);
@@ -54,7 +55,7 @@ namespace CoffeeApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateOrder(int id, Orders updatedOrder)
+        public async Task<ActionResult> UpdateOrder(int id, Order updatedOrder)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var order = await _context.Orders.SingleOrDefaultAsync(o => o.Id == id && o.UserId == userId);
@@ -63,9 +64,9 @@ namespace CoffeeApi.Controllers
             {
                 return NotFound("Order not found");
             }
-
+            order.GoodId = updatedOrder.GoodId;
             order.Quantity = updatedOrder.Quantity;
-
+            order.GoodPackageId = updatedOrder.GoodPackageId;
             await _context.SaveChangesAsync();
 
             return Ok("Order updated successfully");

@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using api.Context;
 using api.Models;
 using api;
 using System.Security.Cryptography;
@@ -16,10 +15,10 @@ namespace CoffeeApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly CoffeeLeCoupageContext _context;
         private readonly IConfiguration _configuration;
 
-        public UsersController(AppDbContext context, IConfiguration configuration)
+        public UsersController(CoffeeLeCoupageContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
@@ -73,20 +72,24 @@ namespace CoffeeApi.Controllers
         {
             var jwtSettings = _configuration.GetSection("Jwt");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+            var audience = jwtSettings["CoffeeApiAudience"];
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, username)
-                }),
-                Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
+        {
+            Subject = new ClaimsIdentity(new Claim[]
+        {
+            new Claim(ClaimTypes.Name, username)
+        }),
+            Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
+            Audience = audience, // Set audience claim
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+    };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
-        }
+    var token = tokenHandler.CreateToken(tokenDescriptor);
+    return tokenHandler.WriteToken(token);
+}
+        
     }
+    
 }

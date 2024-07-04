@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 namespace api.Models{
-    public class Orders{
+    public class OrdersDTO{
         public int Id { get; set; }
         public int GoodId { get; set; }
         public decimal Quantity { get; set; }
