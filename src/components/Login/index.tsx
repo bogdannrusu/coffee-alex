@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // frontend/src/Login.js
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -20,26 +21,25 @@ const defaultTheme = createTheme();
 export default function Login() {
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const requestData = {
-      username: formData.get('login'),
-      password: formData.get('password'),
-    };
+    const requestData = new URLSearchParams();
+    requestData.append('username', formData.get('login'));
+    requestData.append('password', formData.get('password'));
 
     try {
-      const response = await axios.post('http://localhost:8000/token', requestData, {
+      const response = await axios.post('http://localhost:5259/api/users/token', requestData, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       });
 
-      const { access_token } = response.data;
-      localStorage.setItem('token', access_token);
+      const { accessToken } = response.data;
+      localStorage.setItem('token', accessToken);
 
       // If login successful, navigate to WpNavBar
       navigate('/wp'); // Adjust the path if necessary
-    } catch (error) {
-     // console.error('Login error:', error.response?.data?.detail || error.message);
+    } catch (error: any) {
+      console.error('Login error:', error.response?.data?.detail || error.message);
       alert('Login failed. Please check your credentials.');
     }
   };
@@ -129,5 +129,3 @@ export default function Login() {
     </ThemeProvider>
   );
 }
-
-

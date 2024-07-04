@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Models
 {
-    public class GoodsPackages{
+    public class GoodsPackagesDTO{
         public int Id { get; set; }
         public int GoodId { get; set; }
         public int PackageId { get; set; }
