@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using api.Models;
-using api;
+using api.Interfaces;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-
+using Microsoft.EntityFrameworkCore;
+using api;
 
 namespace CoffeeApi.Controllers
 {
@@ -15,24 +15,30 @@ namespace CoffeeApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly CoffeeLeCoupageContext _context;
+        private readonly IUserRepository _userRepository;
         private readonly IConfiguration _configuration;
 
-        public UsersController(CoffeeLeCoupageContext context, IConfiguration configuration)
+        public UsersController(IUserRepository userRepository, IConfiguration configuration)
         {
-            _context = context;
+            _userRepository = userRepository;
             _configuration = configuration;
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> Register(User user)
+        public async Task<IActionResult> Register(UserDTO userDto, User user)
         {
             user.Password = HashPassword(user.Password);
 
-            _context.Users.Add(user);
+            var users = new User{
+                Username = userDto.Username,
+                Password = HashPassword(userDto.Password),
+                IsActive = 1
+            };
+
             try
             {
-                await _context.SaveChangesAsync();
+                await _userRepository.AddUserAsync(user);
+                await _userRepository.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -45,7 +51,7 @@ namespace CoffeeApi.Controllers
         [HttpPost("token")]
         public async Task<ActionResult<Token>> Login([FromForm] string username, [FromForm] string password)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
+            var user = await _userRepository.GetUserByUsernameAsync(username);
 
             if (user == null || !VerifyPassword(password, user.Password))
             {
@@ -76,20 +82,18 @@ namespace CoffeeApi.Controllers
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new Claim[]
-        {
-            new Claim(ClaimTypes.Name, username)
-        }),
-            Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
-            Audience = audience, // Set audience claim
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-    };
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name, username)
+                }),
+                Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
+                Audience = audience,
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
 
-    var token = tokenHandler.CreateToken(tokenDescriptor);
-    return tokenHandler.WriteToken(token);
-}
-        
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
     }
-    
 }

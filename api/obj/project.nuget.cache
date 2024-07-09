@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AvV/nVidZsM=",
+  "dgSpecHash": "iL4SZTj2pjI=",
   "success": true,
   "projectFilePath": "D:\\coffee-alex\\api\\api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bogdan.Rusu\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\Bogdan.Rusu\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Bogdan.Rusu\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.6\\microsoft.aspnetcore.authentication.jwtbearer.8.0.6.nupkg.sha512",
     "C:\\Users\\Bogdan.Rusu\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.6\\microsoft.aspnetcore.openapi.8.0.6.nupkg.sha512",
