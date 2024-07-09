@@ -15,5 +15,7 @@ public partial class GoodPackage
 
     public virtual Good Good { get; set; } = null!;
 
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
     public virtual Package Pack { get; set; } = null!;
 }

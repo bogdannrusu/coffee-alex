@@ -1,0 +1,8 @@
+Update context:
+#dotnet ef dbcontext scaffold "Server=localhost;Database=coffee_le_coupage;User=root;
+                               Password=Ban4ever!#;Port=3305;" Pomelo.EntityFrameworkCore.MySql -o Models --context CoffeeLeCoupageContext --force
+Run Server:
+#dotnet run
+
+Clean/Build Project:
+#dotnet clean/dotnet build

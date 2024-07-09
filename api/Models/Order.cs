@@ -17,5 +17,7 @@ public partial class Order
 
     public virtual Good Good { get; set; } = null!;
 
+    public virtual GoodPackage? GoodPackage { get; set; }
+
     public virtual User? User { get; set; }
 }

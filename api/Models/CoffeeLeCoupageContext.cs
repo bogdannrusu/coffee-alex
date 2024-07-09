@@ -32,12 +32,13 @@ public partial class CoffeeLeCoupageContext : DbContext
 
     public virtual DbSet<Package> Packages { get; set; }
 
+    public virtual DbSet<Role> Roles { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<Workpoint> Workpoints { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=localhost;database=coffee_le_coupage;user=root;password=Ban4ever!#;port=3305", Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.40-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -220,6 +221,8 @@ public partial class CoffeeLeCoupageContext : DbContext
 
             entity.HasIndex(e => e.GoodId, "FK_orders_good_id");
 
+            entity.HasIndex(e => e.GoodPackageId, "FK_orders_good_package_id");
+
             entity.HasIndex(e => e.UserId, "user_id");
 
             entity.Property(e => e.Id)
@@ -242,6 +245,10 @@ public partial class CoffeeLeCoupageContext : DbContext
                 .HasForeignKey(d => d.GoodId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_orders_good_id");
+
+            entity.HasOne(d => d.GoodPackage).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.GoodPackageId)
+                .HasConstraintName("FK_orders_good_package_id");
 
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.UserId)
@@ -267,6 +274,31 @@ public partial class CoffeeLeCoupageContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .HasColumnName("name");
+        });
+
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.HasKey(e => e.IdRole).HasName("PRIMARY");
+
+            entity.ToTable("roles");
+
+            entity.HasIndex(e => e.UserId, "FK_roles_user_id");
+
+            entity.Property(e => e.IdRole)
+                .HasColumnType("int(11)")
+                .HasColumnName("id_role");
+            entity.Property(e => e.IsDefault).HasColumnName("is_default");
+            entity.Property(e => e.RoleName)
+                .HasMaxLength(255)
+                .HasColumnName("role_name");
+            entity.Property(e => e.UserId)
+                .HasColumnType("int(11)")
+                .HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Roles)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_roles_user_id");
         });
 
         modelBuilder.Entity<User>(entity =>

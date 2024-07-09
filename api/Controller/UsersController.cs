@@ -25,15 +25,9 @@ namespace CoffeeApi.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserDTO userDto, User user)
+        public async Task<ActionResult> Register(User user)
         {
             user.Password = HashPassword(user.Password);
-
-            var users = new User{
-                Username = userDto.Username,
-                Password = HashPassword(userDto.Password),
-                IsActive = 1
-            };
 
             try
             {
